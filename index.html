@@ -116,7 +116,6 @@
                     <button onclick="NyApp.toggleGridColorMode()" style="background: none; border: none; font-size: 22px; color: #D2232A; cursor: pointer; transition: 0.2s;" title="Đổi màu Trắng/Đỏ" onmouseover="this.style.color='#b91c1c'" onmouseout="this.style.color='#D2232A'">
                         <i class="fa-solid fa-circle-half-stroke"></i>
                     </button>
-                    <button onclick="NyApp.openNySetup()" class="btn-ny-config" title="Cấu hình tên Trung tâm"><i class="fa-solid fa-gear"></i></button>
                 </div>
             </div>
 
@@ -137,6 +136,10 @@
                 <!-- (MỚI) NÚT HƯỚNG DẪN PAKN (Tông màu Cam nhạt để phân biệt với nút Cấu hình) -->
                 <button onclick="document.getElementById('paknModal').classList.add('active')" style="background: #fff7ed; color: #ea580c; border: 1px solid #fdba74; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 15px; display: flex; align-items: center; gap: 8px; white-space: nowrap; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.background='#ffedd5'; this.style.color='#c2410c';" onmouseout="this.style.background='#fff7ed'; this.style.color='#ea580c';">
                     <i class="fa-solid fa-bullhorn"></i> Hướng dẫn PAKN
+                </button>
+
+                <button onclick="NyApp.openEformKiosk()" style="background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 15px; display: flex; align-items: center; gap: 8px; white-space: nowrap; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.background='#ffedd5'; this.style.color='#9a3412';" onmouseout="this.style.background='#fff7ed'; this.style.color='#c2410c';">
+                    <i class="fa-solid fa-file-signature"></i> BIỂU MẪU
                 </button>
 
                 <!-- NÚT CẤU HÌNH LĨNH VỰC -->
@@ -241,6 +244,21 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <!-- Modal Kho biểu mẫu E-Form Siêu tốc -->
+    <div id="eformKioskModal" style="display: none; position: fixed; inset: 0; background: #0f172a; z-index: 100001; flex-direction: column;">
+        <div style="background: #c2410c; color: #fff; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <div style="font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-file-signature"></i> BIỂU MẪU
+                <span style="font-weight: 600; font-size: 13px; opacity: 0.9;">— UBND phường Tây Nha Trang</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <a href="https://dieuphoi.netlify.app/eforms/" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 700; font-size: 13px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Mở tab mới</a>
+                <button onclick="NyApp.closeEformKiosk()" style="background: rgba(255,255,255,0.2); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+        <iframe id="eformKioskFrame" title="Kho biểu mẫu điện tử" src="about:blank" style="flex: 1; width: 100%; border: 0; background: #f8fafc;"></iframe>
     </div>
 
     <!-- Modal Chi tiết TTHC (Đồng bộ 100% với index.html, màu nhận diện Kiosk) -->
@@ -380,12 +398,14 @@
             nyProvinceName_V2: 'Khánh Hoà',
             nyLevel_V2: 'xa',
             nyAddress_V2: 'Số 480 Lương Định Của, phường Tây Nha Trang, tỉnh Khánh Hòa',
+            nyPhone_V2: '0258.3.892.377',
             nyTime_V2: 'Sáng: 07h00 - 11h30 | Chiều: 13h30 - 17h00',
             nyGridColorMode: 'red',
             nyDefaultAgency_V2: 'UBND phường Tây Nha Trang'
         };
         localStorage.setItem('nyLevel_V2', DEFAULTS.nyLevel_V2);
         localStorage.setItem('nyTime_V2', DEFAULTS.nyTime_V2);
+        localStorage.setItem('nyPhone_V2', DEFAULTS.nyPhone_V2);
         localStorage.setItem('nyDefaultAgency_V2', DEFAULTS.nyDefaultAgency_V2);
         Object.keys(DEFAULTS).forEach(function (k) {
             if (!localStorage.getItem(k)) localStorage.setItem(k, DEFAULTS[k]);
@@ -449,7 +469,7 @@
                 </h4>
                 <div style="font-size: 13.5px; color: #475569; line-height: 1.7; font-weight: 500;">
                     <div><i class="fa-solid fa-location-dot" style="width: 22px; color: #94a3b8; text-align: center;"></i> <strong style="color: #1e293b;">Địa chỉ:</strong> <span id="ny-footer-address">Chưa cập nhật</span></div>
-                    <div><i class="fa-solid fa-phone" style="width: 22px; color: #94a3b8; text-align: center;"></i> <strong style="color: #1e293b;">Điện thoại:</strong> <span id="ny-footer-phone">Chưa cập nhật</span></div>
+                    <div><i class="fa-solid fa-phone" style="width: 22px; color: #94a3b8; text-align: center;"></i> <strong style="color: #1e293b;">Điện thoại:</strong> <a id="ny-footer-phone" href="tel:02583892377" style="color: #D2232A; font-weight: 800; text-decoration: none;">0258.3.892.377</a></div>
                     <div><i class="fa-regular fa-clock" style="width: 22px; color: #94a3b8; text-align: center;"></i> <strong style="color: #1e293b;">Giờ làm việc:</strong> <span id="ny-footer-time">Sáng: 07h00 - 11h30 | Chiều: 13h30 - 17h00</span></div>
                 </div>
             </div>
