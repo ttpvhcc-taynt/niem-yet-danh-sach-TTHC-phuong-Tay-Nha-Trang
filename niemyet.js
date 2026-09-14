@@ -1103,17 +1103,7 @@ const NyApp = {
     
     openEformKiosk() {
         try { localStorage.setItem('eform_default_agency', 'UBND phường Tây Nha Trang'); } catch (e) {}
-        let modal = document.getElementById('eformKioskModal');
-        let frame = document.getElementById('eformKioskFrame');
-        if (!modal || !frame) {
-            window.open('https://dieuphoi.netlify.app/eforms/', '_blank');
-            return;
-        }
-        if (!frame.getAttribute('data-loaded')) {
-            frame.src = 'https://dieuphoi.netlify.app/eforms/';
-            frame.setAttribute('data-loaded', '1');
-        }
-        modal.style.display = 'flex';
+        window.open('https://dieuphoi.netlify.app/eforms/', '_blank');
     },
 
     closeEformKiosk() {
