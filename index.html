@@ -407,6 +407,7 @@
         localStorage.setItem('nyTime_V2', DEFAULTS.nyTime_V2);
         localStorage.setItem('nyPhone_V2', DEFAULTS.nyPhone_V2);
         localStorage.setItem('nyDefaultAgency_V2', DEFAULTS.nyDefaultAgency_V2);
+        localStorage.removeItem('nySelectedFields');
         Object.keys(DEFAULTS).forEach(function (k) {
             if (!localStorage.getItem(k)) localStorage.setItem(k, DEFAULTS[k]);
         });

@@ -1176,13 +1176,7 @@ const NyApp = {
             return a.localeCompare(b, 'vi');
         });
         
-        // ===============================================
-        // BỘ LỌC CẤU HÌNH KIOSK (Chỉ hiển thị lĩnh vực đã cấu hình)
-        // Nếu biến nySelectedFields === null (Chưa cấu hình lần nào) -> Vẫn hiển thị tất cả
-        // ===============================================
-        if (this.nySelectedFields !== null) {
-            dsLinhVuc = dsLinhVuc.filter(lv => this.nySelectedFields.includes(lv));
-        }
+        // Trang chủ: hiện TẤT CẢ lĩnh vực. 11 lĩnh vực ưu tiên đã được xếp lên đầu ở trên.
 
         if (dsLinhVuc.length === 0) {
             container.innerHTML = `<div style="text-align:center; padding: 50px; color: #64748b; font-size: 16px; background: #fff; border-radius: 12px; border: 1px dashed #cbd5e1; grid-column: 1/-1;">Chưa có lĩnh vực nào được cấu hình để hiển thị. Vui lòng bấm "Cấu hình" ở góc trên!</div>`;
