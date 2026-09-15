@@ -1151,7 +1151,30 @@ const NyApp = {
             }
         });
 
-        let dsLinhVuc = Array.from(linhVucMap.keys()).sort((a, b) => a.localeCompare(b, 'vi'));
+        const PRIORITY_LV = [
+            'an toan thuc pham',
+            'bao tro xa hoi',
+            'dat dai',
+            'ho tich',
+            'nguoi co cong',
+            'nha o va cong so',
+            'nuoi con nuoi',
+            'quy hoach do thi va nong thon',
+            'tai chinh dat dai',
+            'thanh lap va hoat dong doanh nghiep',
+            'thu tuc hanh chinh lien thong'
+        ];
+        let lvKey = (s) => this.removeAccents(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+        let lvRank = (s) => {
+            let k = lvKey(s);
+            let idx = PRIORITY_LV.findIndex(p => k === p || k.startsWith(p) || p.startsWith(k));
+            return idx === -1 ? 1000 : idx;
+        };
+        let dsLinhVuc = Array.from(linhVucMap.keys()).sort((a, b) => {
+            let ra = lvRank(a), rb = lvRank(b);
+            if (ra !== rb) return ra - rb;
+            return a.localeCompare(b, 'vi');
+        });
         
         // ===============================================
         // BỘ LỌC CẤU HÌNH KIOSK (Chỉ hiển thị lĩnh vực đã cấu hình)

@@ -484,61 +484,9 @@
                 </div>
             </div>
 
-            <!-- KHỐI 3: NÚT ABOUT (PHẢI) -->
-            <div style="flex: 0.5; min-width: 180px; display: flex; justify-content: flex-end; align-items: center;">
-                <button onclick="document.getElementById('aboutAuthorModal').style.display='flex'" style="background: #fff; color: #D2232A; border: 1.5px solid #D2232A; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 800; font-size: 13px; text-transform: uppercase; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(210, 35, 42, 0.1); display: flex; align-items: center; gap: 8px;" onmouseover="this.style.background='#D2232A'; this.style.color='#fff';" onmouseout="this.style.background='#fff'; this.style.color='#D2232A';">
-                    <i class="fa-solid fa-circle-info" style="font-size: 15px;"></i> About this page
-                </button>
-            </div>
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- MODAL THÔNG TIN TÁC GIẢ (TỐI GIẢN & CHUNG) -->
-    <!-- ========================================== -->
-    <div id="aboutAuthorModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 100000; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
-        <div style="background: #fff; width: 90%; max-width: 550px; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); overflow: hidden; border: 1px solid #e2e8f0; position: relative; animation: slideUp 0.3s ease-out;">
-            
-            <button onclick="document.getElementById('aboutAuthorModal').style.display='none'" style="position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; z-index: 10;" onmouseover="this.style.background='rgba(255,255,255,0.4)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'"><i class="fa-solid fa-xmark"></i></button>
-
-            <!-- Banner Header -->
-            <div style="background: linear-gradient(135deg, #D2232A, #991b1b); padding: 40px 25px 30px 25px; text-align: center; color: white;">
-                <div style="width: 85px; height: 85px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 4px solid rgba(255,255,255,0.2); background-clip: padding-box;">
-                    <i class="fa-solid fa-user-tie" style="font-size: 38px; color: #D2232A;"></i>
-                </div>
-                <h2 style="margin: 0; font-size: 24px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;">ĐÔI LỜI TỪ TÁC GIẢ</h2>
-            </div>
-
-            <!-- Content Area -->
-            <div style="padding: 35px 35px 25px 35px; font-size: 15.5px; color: #334155; line-height: 1.8; text-align: justify; position: relative;">
-                <i class="fa-solid fa-quote-left" style="position: absolute; top: 25px; left: 15px; color: #f1f5f9; font-size: 60px; z-index: 0;"></i>
-                
-                <p style="margin-top: 0; position: relative; z-index: 1;">
-                    Với kinh nghiệm nhiều năm làm việc tại Bộ phận một cửa, tôi thấu hiểu những áp lực và cảm thông với những khó khăn trong công việc hằng ngày của cán bộ cấp cơ sở. 
-                </p>
-                <p style="position: relative; z-index: 1;">
-                    Công cụ này được phát triển với mong muốn góp phần giảm bớt áp lực, góp phần nâng cao hiệu quả xử lý công việc và phục vụ người dân tốt hơn.
-                </p>
-                
-                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #cbd5e1; font-weight: 900; color: #D2232A; text-align: center; font-size: 17px; position: relative; z-index: 1; text-transform: uppercase; letter-spacing: 0.5px;">
-                    "Vì một nền hành chính phục vụ!"
-                </div>
-            </div>
-
-            <!-- Footer Contact -->
-            <div style="background: #f8fafc; padding: 20px 30px; border-top: 1px solid #e2e8f0; display: flex; justify-content: center; align-items: center; gap: 40px;">
-                <div style="display: flex; align-items: center; gap: 10px; color: #475569; font-weight: 600; font-size: 14.5px;">
-                    <div style="width: 38px; height: 38px; border-radius: 50%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #64748b;"><i class="fa-solid fa-envelope"></i></div>
-                    Kết nối hỗ trợ
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px; color: #D2232A; font-weight: 900; font-size: 18px; letter-spacing: 0.5px;">
-                    <div style="width: 38px; height: 38px; border-radius: 50%; background: #fee2e2; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-phone-volume"></i></div>
-                    0915 163 312
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <style>
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px); }
